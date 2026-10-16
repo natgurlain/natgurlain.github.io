@@ -1,10 +1,31 @@
+---
+# Front matter so GitHub Pages runs this page through Jekyll.
+# Projects live in _data/projects.yml, Substack posts in _data/writing.yml.
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nat Gurlain — Software Engineer</title>
-    <meta name="description" content="Nat Gurlain — Software Engineer building at the intersection of AI, machine learning, and open source.">
+    <meta name="description" content="Software engineer building AI products and open-source tools, including Seraph, Leitro, and From The Greats.">
+    <link rel="canonical" href="https://natgurlain.com/">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#0a0a0b">
+
+    <!-- Link previews on X, Slack, LinkedIn, iMessage, etc. -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://natgurlain.com/">
+    <meta property="og:title" content="Nat Gurlain — Software Engineer">
+    <meta property="og:description" content="Software engineer building AI products and open-source tools.">
+    <meta property="og:image" content="https://natgurlain.com/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@natgurlain">
+    <meta name="twitter:creator" content="@natgurlain">
+
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -32,6 +53,12 @@
             padding: 80px 24px 120px;
         }
 
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
         /* Hero */
         .hero { margin-bottom: 64px; }
 
@@ -39,20 +66,25 @@
             font-size: 1.75rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+        }
+
+        .hero .lead {
+            color: var(--text);
+            font-size: 1.15rem;
+            margin-bottom: 12px;
         }
 
         .hero p {
             color: var(--text-muted);
             font-size: 1.05rem;
-            max-width: 520px;
+            max-width: 540px;
         }
-
-        .hero p + p { margin-top: 12px; }
 
         /* Socials */
         .socials {
             display: flex;
+            flex-wrap: wrap;
             gap: 20px;
             margin-top: 28px;
         }
@@ -105,16 +137,54 @@
             background: var(--accent-dim);
         }
 
+        .project:focus-visible { border-radius: 12px; }
+
         .project-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .project-icon {
+            flex: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .project-icon-repo {
+            display: grid;
+            place-items: center;
+            background: var(--border);
+            color: var(--text-muted);
+        }
+
+        .project-icon-repo svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .project-title {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
         }
 
         .project-name {
             font-size: 1.05rem;
             font-weight: 600;
+        }
+
+        .project-link {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .project-arrow {
@@ -143,23 +213,47 @@
 
         .tag {
             font-size: 0.75rem;
-            padding: 3px 10px;
-            background: var(--accent-dim);
-            color: var(--accent);
-            border-radius: 100px;
-            font-weight: 500;
-        }
-
-        /* Interests */
-        .interests {
+            padding: 2px 10px;
+            border: 1px solid var(--border);
             color: var(--text-muted);
-            font-size: 0.95rem;
+            border-radius: 100px;
         }
 
-        .interests strong {
+        /* Writing */
+        .posts { list-style: none; }
+
+        .posts li + li { border-top: 1px solid var(--border); }
+
+        .posts a {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            padding: 12px 0;
             color: var(--text);
-            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
         }
+
+        .posts a:hover { color: var(--accent); }
+
+        .posts time {
+            flex: none;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .more {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .more:hover { color: var(--text); }
 
         /* Footer */
         footer {
@@ -173,6 +267,12 @@
         @media (max-width: 480px) {
             main { padding: 48px 20px 80px; }
             .hero h1 { font-size: 1.5rem; }
+            .project { padding: 18px 20px; }
+            .posts a { flex-direction: column; gap: 2px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; }
         }
     </style>
 </head>
@@ -180,135 +280,67 @@
     <main>
         <div class="hero">
             <h1>Nat Gurlain</h1>
-            <p>Software engineer with a deep interest in artificial intelligence, machine learning, and building tools that push the boundary of what autonomous systems can do.</p>
-            <p>Passionate about reinforcement learning, deep learning, and crafting open-source software that solves real problems.</p>
+            <p class="lead">Software engineer building AI products and open-source tools.</p>
+            <p>I work mostly on AI agents, reinforcement learning, and tools that help people learn and think, with side interests in quantitative finance and blockchain. I write about AI, mathematics, and markets on Substack.</p>
             <div class="socials">
                 <a href="https://github.com/natgurlain" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     GitHub
                 </a>
                 <a href="https://x.com/natgurlain" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     @natgurlain
                 </a>
                 <a href="https://natgurlain.substack.com" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
                     Substack
                 </a>
             </div>
         </div>
 
+        {% for group in site.data.projects %}
         <section>
-            <h2>Projects</h2>
-
-            <a class="project" href="https://seraph.quest" target="_blank" rel="noopener">
+            <h2>{{ group.title }}</h2>
+            {% for p in group.items %}
+            <a class="project" href="{{ p.url }}" target="_blank" rel="noopener">
                 <div class="project-header">
-                    <span class="project-name">Seraph</span>
-                    <span class="project-arrow">&rarr;</span>
+                    {% if p.icon %}
+                    <img class="project-icon" src="{{ p.icon }}" alt="" width="32" height="32">
+                    {% else %}
+                    <span class="project-icon project-icon-repo" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+                    {% endif %}
+                    <span class="project-title">
+                        <span class="project-name">{{ p.name }}</span>
+                        <span class="project-link">{{ p.url | remove_first: "https://" | remove_first: "github.com/" }}</span>
+                    </span>
+                    <span class="project-arrow" aria-hidden="true">&rarr;</span>
                 </div>
-                <p class="project-desc">Workspace-first AI guardian with persistent memory, proactive scheduling, desktop awareness, tool use, reusable workflows, and a live browser cockpit for operator control.</p>
+                <p class="project-desc">{{ p.desc }}</p>
                 <div class="project-tags">
-                    <span class="tag">AI Agent</span>
-                    <span class="tag">React</span>
-                    <span class="tag">FastAPI</span>
-                    <span class="tag">TypeScript</span>
+                    {% for tag in p.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
                 </div>
             </a>
-
-            <a class="project" href="https://fromthegreats.com" target="_blank" rel="noopener">
-                <div class="project-header">
-                    <span class="project-name">From The Greats</span>
-                    <span class="project-arrow">&rarr;</span>
-                </div>
-                <p class="project-desc">Verified catalog of books recommended by exceptional builders, investors, and thinkers, with every recommendation linked back to source evidence.</p>
-                <div class="project-tags">
-                    <span class="tag">Books</span>
-                    <span class="tag">Research</span>
-                    <span class="tag">Knowledge</span>
-                    <span class="tag">Search</span>
-                </div>
-            </a>
-
-            <a class="project" href="https://stakescope.app" target="_blank" rel="noopener">
-                <div class="project-header">
-                    <span class="project-name">StakeScope</span>
-                    <span class="project-arrow">&rarr;</span>
-                </div>
-                <p class="project-desc">Multi-chain staking explorer with real-time validator analytics, reward calculators, and portfolio tracking for Proof-of-Stake networks.</p>
-                <div class="project-tags">
-                    <span class="tag">Blockchain</span>
-                    <span class="tag">NEAR</span>
-                    <span class="tag">Analytics</span>
-                    <span class="tag">React</span>
-                </div>
-            </a>
-
-            <a class="project" href="https://brainflops.xyz" target="_blank" rel="noopener">
-                <div class="project-header">
-                    <span class="project-name">BrainFLOPS</span>
-                    <span class="project-arrow">&rarr;</span>
-                </div>
-                <p class="project-desc">Interactive comparison of world AI compute and human-brain compute estimates, using the latest Epoch AI accelerator data.</p>
-                <div class="project-tags">
-                    <span class="tag">AI</span>
-                    <span class="tag">Data Visualization</span>
-                    <span class="tag">Compute</span>
-                    <span class="tag">Research</span>
-                </div>
-            </a>
-
-            <a class="project" href="https://github.com/neurion-ai/maas" target="_blank" rel="noopener">
-                <div class="project-header">
-                    <span class="project-name">MAAS</span>
-                    <span class="project-arrow">&rarr;</span>
-                </div>
-                <p class="project-desc">Codex-first control plane for supervising autonomous work, with governed execution loops, explicit review and recovery, project memory, and observable runs, logs, traces, and incidents.</p>
-                <div class="project-tags">
-                    <span class="tag">Codex</span>
-                    <span class="tag">Control Plane</span>
-                    <span class="tag">React</span>
-                    <span class="tag">FastAPI</span>
-                </div>
-            </a>
-
-            <a class="project" href="https://github.com/natgurlain/deep-focus" target="_blank" rel="noopener">
-                <div class="project-header">
-                    <span class="project-name">deep-focus</span>
-                    <span class="project-arrow">&rarr;</span>
-                </div>
-                <p class="project-desc">Lightweight macOS website blocker that automatically restricts distracting sites during configurable work hours using system-level hosts file manipulation and cron scheduling.</p>
-                <div class="project-tags">
-                    <span class="tag">Productivity</span>
-                    <span class="tag">Shell</span>
-                    <span class="tag">macOS</span>
-                </div>
-            </a>
-
-            <a class="project" href="https://github.com/natgurlain/alpha-q" target="_blank" rel="noopener">
-                <div class="project-header">
-                    <span class="project-name">alpha-q</span>
-                    <span class="project-arrow">&rarr;</span>
-                </div>
-                <p class="project-desc">DQN-to-Rainbow for Atari: incremental deep reinforcement learning implementations with experiment tracking via MLFlow.</p>
-                <div class="project-tags">
-                    <span class="tag">Reinforcement Learning</span>
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">MLFlow</span>
-                    <span class="tag">Python</span>
-                </div>
-            </a>
-
+            {% endfor %}
         </section>
+        {% endfor %}
 
         <section>
-            <h2>Interests</h2>
-            <p class="interests">
-                Deeply curious about <strong>artificial intelligence</strong>, <strong>reinforcement learning</strong>, and <strong>deep learning</strong> &mdash; from training autonomous trading agents to exploring the frontiers of language models. Also drawn to <strong>quantitative finance</strong>, <strong>blockchain</strong> technology, <strong>systems programming</strong>, and the art of <strong>competitive programming</strong>. Writes about the intersections of AI, mathematics, and financial markets on Substack.
-            </p>
+            <h2>Writing</h2>
+            <ul class="posts">
+                {% for post in site.data.writing %}
+                <li>
+                    <a href="{{ post.url }}" target="_blank" rel="noopener">
+                        <span>{{ post.title }}</span>
+                        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %Y' }}</time>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <a class="more" href="https://natgurlain.substack.com" target="_blank" rel="noopener">All posts on Substack &rarr;</a>
         </section>
 
         <footer>
-            <p>natgurlain.com</p>
+            <p>&copy; {{ site.time | date: '%Y' }} Nat Gurlain</p>
         </footer>
     </main>
 </body>

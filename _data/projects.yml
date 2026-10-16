@@ -1,0 +1,52 @@
+# Project cards on the home page, grouped into sections.
+# Products link to a live site and show its icon; open-source entries link to GitHub.
+# Tags are topics (what the project is about), not tech stack.
+
+- title: Products
+  items:
+    - name: Leitro
+      url: https://leitro.xyz
+      icon: /assets/icons/leitro.svg
+      desc: AI flashcards made from your own material, with mnemonics for the tricky parts and spaced repetition to make it stick.
+      tags: [AI, Learning]
+
+    - name: Seraph
+      url: https://seraph.quest
+      icon: /assets/icons/seraph.svg
+      desc: An AI assistant with long-term memory that plans ahead, uses your tools and browser, and keeps you in control of what it does.
+      tags: [AI agents, Productivity]
+
+    - name: From The Greats
+      url: https://fromthegreats.com
+      icon: /assets/icons/fromthegreats.svg
+      desc: Books recommended by great builders, investors, and thinkers, with every recommendation linked to its source.
+      tags: [Books, Research]
+
+    - name: StakeScope
+      url: https://stakescope.app
+      icon: /assets/icons/stakescope.png
+      desc: Check your NEAR stake, estimated rewards, validator health, and fees without connecting a wallet.
+      tags: [Blockchain, Analytics]
+
+    - name: BrainFLOPS
+      url: https://brainflops.xyz
+      icon: /assets/icons/brainflops.svg
+      desc: Compares estimates of the world's AI compute with the compute needed to emulate a human brain, using Epoch AI data.
+      tags: [AI, Data visualization]
+
+- title: Open source
+  items:
+    - name: MAAS
+      url: https://github.com/neurion-ai/maas
+      desc: A control plane for supervising Codex coding agents, with governed runs, review and recovery, project memory, and full logs and traces.
+      tags: [AI agents, Developer tools]
+
+    - name: deep-focus
+      url: https://github.com/natgurlain/deep-focus
+      desc: A small macOS tool that blocks distracting websites during your work hours.
+      tags: [Productivity]
+
+    - name: alpha-q
+      url: https://github.com/natgurlain/alpha-q
+      desc: Deep reinforcement learning for Atari, built up step by step from DQN to Rainbow, with MLflow experiment tracking.
+      tags: [Reinforcement learning]
