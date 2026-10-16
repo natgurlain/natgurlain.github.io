@@ -1,5 +1,5 @@
 # Project cards on the home page, grouped into sections.
-# Products link to a live site and show its icon; open-source entries link to GitHub.
+# Entries with an icon show it; without one they get a GitHub mark.
 # Tags are topics (what the project is about), not tech stack.
 
 - title: Products
@@ -9,12 +9,6 @@
       icon: /assets/icons/leitro.svg
       desc: AI flashcards made from your own material, with mnemonics for the tricky parts and spaced repetition to make it stick.
       tags: [AI, Learning]
-
-    - name: Seraph
-      url: https://seraph.quest
-      icon: /assets/icons/seraph.svg
-      desc: An AI assistant with long-term memory that plans ahead, uses your tools and browser, and keeps you in control of what it does.
-      tags: [AI agents, Productivity]
 
     - name: From The Greats
       url: https://fromthegreats.com
@@ -36,6 +30,13 @@
 
 - title: Open source
   items:
+    # Open source, but links to its own site (which links to github.com/seraph-quest/seraph).
+    - name: Seraph
+      url: https://seraph.quest
+      icon: /assets/icons/seraph.svg
+      desc: An AI assistant with long-term memory that plans ahead, uses your tools and browser, and keeps you in control of what it does.
+      tags: [AI agents, Productivity]
+
     - name: MAAS
       url: https://github.com/neurion-ai/maas
       desc: A control plane for supervising Codex coding agents, with governed runs, review and recovery, project memory, and full logs and traces.
