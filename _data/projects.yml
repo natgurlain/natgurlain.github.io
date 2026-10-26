@@ -37,6 +37,16 @@
       desc: An AI assistant with long-term memory that plans ahead, uses your tools and browser, and keeps you in control of what it does.
       tags: [AI agents, Productivity]
 
+    - name: Kaggle Bible
+      url: https://github.com/natgurlain/kaggle-bible
+      desc: An evidence-backed field guide to Kaggle competitions, covering what worked, how it was validated, what it cost, and what transfers.
+      tags: [Machine learning, Research]
+
+    - name: awesome-llm-architectures
+      url: https://github.com/natgurlain/awesome-llm-architectures
+      desc: A hands-on curriculum for implementing language model architectures from scratch, from a bigram model to MoE, state-space, and diffusion models.
+      tags: [LLMs, Learning]
+
     - name: MAAS
       url: https://github.com/neurion-ai/maas
       desc: A control plane for supervising Codex coding agents, with governed runs, review and recovery, project memory, and full logs and traces.
