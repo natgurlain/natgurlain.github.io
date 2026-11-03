@@ -52,6 +52,11 @@
       desc: A browser extension for restyling any website with your own CSS, with a live editor and everything kept on your device.
       tags: [Customization]
 
+    - name: Brace
+      url: https://github.com/natgurlain/brace
+      desc: A browser extension that turns raw JSON into a readable, collapsible tree, keeps numbers exactly as written, and adds a paste-and-format page.
+      tags: [Developer tools]
+
     - name: awesome-llm-architectures
       url: https://github.com/natgurlain/awesome-llm-architectures
       desc: A hands-on curriculum for implementing language model architectures from scratch, from a bigram model to MoE, state-space, and diffusion models.
