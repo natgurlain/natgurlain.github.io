@@ -37,25 +37,35 @@
       desc: An AI assistant with long-term memory that plans ahead, uses your tools and browser, and keeps you in control of what it does.
       tags: [AI agents, Productivity]
 
-    - name: Kaggle Bible
-      url: https://github.com/natgurlain/kaggle-bible
-      desc: An evidence-backed field guide to Kaggle competitions, covering what worked, how it was validated, what it cost, and what transfers.
-      tags: [Machine learning, Research]
+    - name: WorkWall
+      url: https://github.com/natgurlain/workwall
+      desc: A browser extension that blocks distracting sites during your focus hours and shows where your time actually goes.
+      tags: [Productivity]
+
+    - name: Hush
+      url: https://github.com/natgurlain/hush
+      desc: A browser extension that hides feeds, Shorts, trends and other distractions on YouTube, X, Reddit, Facebook, Instagram and LinkedIn.
+      tags: [Productivity]
+
+    - name: Repaint
+      url: https://github.com/natgurlain/repaint
+      desc: A browser extension for restyling any website with your own CSS, with a live editor and everything kept on your device.
+      tags: [Customization]
 
     - name: awesome-llm-architectures
       url: https://github.com/natgurlain/awesome-llm-architectures
       desc: A hands-on curriculum for implementing language model architectures from scratch, from a bigram model to MoE, state-space, and diffusion models.
       tags: [LLMs, Learning]
 
+    - name: Kaggle Bible
+      url: https://github.com/natgurlain/kaggle-bible
+      desc: An evidence-backed field guide to Kaggle competitions, covering what worked, how it was validated, what it cost, and what transfers.
+      tags: [Machine learning, Research]
+
     - name: MAAS
       url: https://github.com/neurion-ai/maas
       desc: A control plane for supervising Codex coding agents, with governed runs, review and recovery, project memory, and full logs and traces.
       tags: [AI agents, Developer tools]
-
-    - name: deep-focus
-      url: https://github.com/natgurlain/deep-focus
-      desc: A small macOS tool that blocks distracting websites during your work hours.
-      tags: [Productivity]
 
     - name: alpha-q
       url: https://github.com/natgurlain/alpha-q
